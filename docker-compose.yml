@@ -5,6 +5,14 @@ volumes:
     driver: local
 
 services:
+  rabbitmq:
+    image: rabbitmq:management
+    volumes:
+      - .rabbitmq_data/:/var/lib/rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+
   mysql:
     image: mysql:latest
     volumes:
@@ -20,7 +28,9 @@ services:
       - 3307:3307
 
   keycloak:
-    image: jboss/keycloak
+    build:
+      context: .
+      dockerfile: Dockerfile
     environment:
       DB_VENDOR: MYSQL
       DB_ADDR: mysql
@@ -29,14 +39,13 @@ services:
       DB_PASSWORD: password
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: admin
+      KK_TO_RMQ_URL: localhost
+      KK_TO_RMQ_PORT: 5672
+      KK_TO_RMQ_VHOST: empty
+      KK_TO_RMQ_EXCHANGE: amq.topic
+      KK_TO_RMQ_USERNAME: guest
+      KK_TO_RMQ_PASSWORD: guest
     ports:
       - 8080:8080
     depends_on:
       - mysql
-  rabbitmq:
-    image: rabbitmq:management
-    volumes:
-      - .rabbitmq_data/:/var/lib/rabbitmq
-    ports:
-      - 5672:5672
-      - 15672:15672

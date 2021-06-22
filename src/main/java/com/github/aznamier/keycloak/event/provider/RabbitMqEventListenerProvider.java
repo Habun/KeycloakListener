@@ -43,6 +43,8 @@ public class RabbitMqEventListenerProvider implements EventListenerProvider {
 		String messageString = RabbitMqConfig.writeAsJson(msg, true);
 		
 		BasicProperties msgProps = this.getMessageProps(EventClientNotificationMqMsg.class.getName());
+
+		System.out.println("WERKTTTTTTTTTTTTTTTTTTTTTTTTTTTT????");
 		this.publishNotification(messageString, msgProps, routingKey);
 	}
 

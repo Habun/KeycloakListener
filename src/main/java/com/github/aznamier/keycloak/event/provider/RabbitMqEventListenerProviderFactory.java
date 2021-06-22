@@ -34,5 +34,4 @@ public class RabbitMqEventListenerProviderFactory implements EventListenerProvid
 	public String getId() {
 		return "keycloak-to-rabbitmq";
 	}
-
 }

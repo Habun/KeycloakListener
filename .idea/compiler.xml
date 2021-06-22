@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="keycloak-to-rabbit" target="1.5" />
+      <module name="keycloak-to-rabbit" target="6" />
       <module name="test" target="11" />
     </bytecodeTargetLevel>
   </component>
