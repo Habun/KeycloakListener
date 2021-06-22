@@ -1,0 +1,13 @@
+<spi name="eventsListener">
+    <provider name="mqtt" enabled="true">
+        <properties>
+            <property name="url" value="${env.KK_TO_RMQ_URL:localhost}"/>
+            <property name="port" value="${env.KK_TO_RMQ_PORT:5672}"/>
+            <property name="vhost" value="${env.KK_TO_RMQ_VHOST:}"/>
+            <property name="exchange" value="${env.KK_TO_RMQ_EXCHANGE:amq.topic}"/>
+
+            <property name="username" value="${env.KK_TO_RMQ_USERNAME:guest}"/>
+            <property name="password" value="${env.KK_TO_RMQ_PASSWORD:guest}"/>
+        </properties>
+    </provider>
+</spi>
